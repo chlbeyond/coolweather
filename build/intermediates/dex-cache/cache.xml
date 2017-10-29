@@ -79,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="9570fddae0fd5373fd0aa229acef7f949d3c072c">
+        sha1="209eb8c8b24b3f3af3bc3241cdb24528e775e801">
         <dex dex="E:\Android\guolin\CoolWeather\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_547bbe255fa876857813235ee16f910ce514ac12\classes.dex" />
     </item>
     <item

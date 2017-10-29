@@ -5,14 +5,13 @@ import android.text.TextUtils;
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.County;
 import com.coolweather.android.db.Province;
+import com.coolweather.android.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-
-import okhttp3.Response;
 
 /**
  * Created by 97475 on 2017/10/27.
@@ -37,8 +36,6 @@ public class Utility {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -60,8 +57,6 @@ public class Utility {
                 return true;
             }
         } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
@@ -85,10 +80,22 @@ public class Utility {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
+    }
+
+    public static Weather handlerWeatherResponse(String response) {
+        if (!TextUtils.isEmpty(response)) {
+            try {
+                JSONObject object = new JSONObject(response);
+                JSONArray array = object.getJSONArray("HeWeather");
+                String weather = array.getJSONObject(0).toString();
+                return new Gson().fromJson(weather, Weather.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 }
